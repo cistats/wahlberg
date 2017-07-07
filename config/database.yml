@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  min_messages: WARNING
+
+development: &development
+  <<: *default
+  database: wahlberg_development
+
+test:
+  <<: *default
+  database: wahlberg_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

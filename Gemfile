@@ -10,7 +10,6 @@ gem 'pg'
 gem 'puma', '~> 3.7'
 
 # Ruby Env
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
 gem 'warning'
 gem 'lograge'

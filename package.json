@@ -1,5 +1,29 @@
 {
   "name": "wahlberg",
   "private": true,
-  "dependencies": {}
+  "scripts": {
+    "build": "NODE_ENV=production webpack --display-optimization-bailout",
+    "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "preact": "^8.1.0",
+    "preact-compat": "^3.16.0"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.5.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "clean-webpack-plugin": "^0.1.16",
+    "dotenv": "^4.0.0",
+    "file-loader": "^0.11.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1"
+  }
 }

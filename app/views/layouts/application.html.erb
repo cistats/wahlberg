@@ -3,8 +3,9 @@
   <head>
     <title>Bench Marky Mark</title>
   </head>
-
   <body>
     <%= yield %>
+
+    <%= javascript_include_tag(asset_url(@assets.dig('app', 'js'), skip_pipeline: true)) %>
   </body>
 </html>

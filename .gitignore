@@ -1,6 +1,11 @@
-/.env
+.byebug_history
 /.bundle
 /log/*
 !/log/.keep
 /tmp
-.byebug_history
+
+/.env
+
+/node_modules
+public/dist/
+webpack-assets.json

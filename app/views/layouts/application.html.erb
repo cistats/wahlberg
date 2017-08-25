@@ -6,6 +6,6 @@
   <body>
     <%= yield %>
 
-    <%= javascript_include_tag(asset_url(@assets.dig('app', 'js'), skip_pipeline: true)) %>
+    <%= javascript_include_tag(asset_url_for('js')) %>
   </body>
 </html>

@@ -39,3 +39,7 @@ group :test do
   gem 'vcr'
   gem 'timecop'
 end
+
+# Auth
+gem 'devise'
+gem 'omniauth-github'

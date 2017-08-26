@@ -2,7 +2,12 @@ import React from 'react'
 import { render } from 'react-dom'
 
 render(
-  <h1>Bench Marky Mark!</h1>,
+  <div>
+    <h1>
+      Bench Marky Mark!
+    </h1>
+    <a href="/login">Login</a>
+  </div>,
   document.getElementById('root')
 )
 

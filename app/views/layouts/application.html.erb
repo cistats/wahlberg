@@ -5,7 +5,9 @@
   </head>
   <body>
     <%= yield %>
-
+    <script>
+      window.CURRENT_USER = <%= current_user.to_json.html_safe %>
+    </script>
     <%= javascript_include_tag(asset_url_for('js')) %>
   </body>
 </html>

@@ -16,6 +16,7 @@
     "react"
   ],
   "plugins": [
+    "emotion",
     "transform-runtime",
     "transform-class-properties"
   ]

@@ -6,24 +6,27 @@
     "start": "webpack-dev-server"
   },
   "dependencies": {
-    "preact": "^8.2.4",
-    "preact-compat": "^3.17.0"
+    "emotion": "^7.3.2",
+    "preact": "^8.2.5",
+    "preact-compat": "^3.17.0",
+    "preact-emotion": "^7.3.2"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.5.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-emotion": "^7.3.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
-    "clean-webpack-plugin": "^0.1.16",
+    "clean-webpack-plugin": "^0.1.17",
     "dotenv": "^4.0.0",
     "file-loader": "^0.11.2",
     "url-loader": "^0.5.9",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
   }
 }

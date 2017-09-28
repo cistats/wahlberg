@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 
-import { Wrapper } from '../styles'
+import Menu from 'ui/Menu'
 
 class App extends Component {
+  state = { user: this.props.user }
+
   render() {
-    return (
-      <Wrapper>
-        <h1>Bench Marky Mark!</h1>
-        <a href="/login">Login</a>
-      </Wrapper>
-    )
+    const { user } = this.state
+
+    return <Menu user={user} />
   }
 }
 

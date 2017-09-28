@@ -13,6 +13,11 @@ css`
     line-height: 1.5;
   }
 
+  h1,
+  p {
+    margin: 0 0 1em 0;
+  }
+
   a {
     text-decoration: none;
 
@@ -22,4 +27,8 @@ css`
   }
 `
 
-export const Wrapper = styled.div`color: black;`
+export const Column = styled.div`
+  max-width: 1012px;
+  margin-right: auto;
+  margin-left: auto;
+`

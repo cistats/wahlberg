@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :user, only: :show
     resources :users
+
+    resources :repos
   end
 
   devise_for :users, path: '', controllers: { omniauth_callbacks: 'omniauth' }

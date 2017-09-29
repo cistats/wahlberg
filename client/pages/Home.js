@@ -4,7 +4,7 @@ import styled from 'preact-emotion'
 import { Column } from 'styles'
 import Menu from 'ui/Menu'
 
-const Wrapper = styled.div`background-color: #0366d6;`
+const Header = styled.div`background: linear-gradient(45deg, #3300ff, #9944ff);`
 
 const Intro = styled(Column)`
   display: grid;
@@ -28,18 +28,20 @@ const Intro = styled(Column)`
 `
 
 const Home = ({ user }) => (
-  <Wrapper>
-    <Menu user={user} />
-    <Intro>
-      <h1>
-        Fix Performance Problems <em>Before</em> They Happen
-      </h1>
-      <h3>
-        Run benchmarks before you deploy and keep track of performance over
-        time.
-      </h3>
-    </Intro>
-  </Wrapper>
+  <div>
+    <Header>
+      <Menu user={user} scrollBackground={true} />
+      <Intro>
+        <h1>
+          Fix Performance Problems <em>Before</em> They Happen
+        </h1>
+        <h3>
+          Run benchmarks before you deploy and keep track of performance over
+          time.
+        </h3>
+      </Intro>
+    </Header>
+  </div>
 )
 
 export default Home

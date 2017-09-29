@@ -28,7 +28,7 @@ css`
 `
 
 export const Column = styled.div`
-  max-width: 1012px;
+  width: 1012px;
   margin-right: auto;
   margin-left: auto;
 `

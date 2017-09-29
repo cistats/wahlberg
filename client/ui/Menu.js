@@ -1,12 +1,20 @@
-import React from 'react'
-import styled from 'preact-emotion'
+import React, { Component } from 'react'
+import styled, { css } from 'preact-emotion'
 import { Link } from 'react-router-dom'
 
 import { Column } from 'styles'
 
 const Background = styled.div`
-  background-color: #222;
-  color: #eee;
+  position: fixed;
+  left: 0;
+  right: 0;
+  color: rgba(255, 255, 255, 0.9);
+  transition: background-color 200ms ease-in-out;
+`
+
+const Scrolled = css`
+  background-color: #333;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
 `
 
 const Wrapper = styled.div`
@@ -47,34 +55,56 @@ const Avatar = styled.img`
   vertical-align: bottom;
 `
 
-const Menu = ({ user }) => (
-  <Background>
-    <Column>
-      <Wrapper>
-        <Left>
-          <Logo to="/">BenchMarkyMark</Logo>
-          {user ? (
-            [
-              <MenuLink to="/projects">Projects</MenuLink>,
-              <MenuLink to="/team">Team</MenuLink>,
-              <MenuLink to="/billing">Billing</MenuLink>,
-              <MenuLink to="/settings">Settings</MenuLink>
-            ]
-          ) : null}
-        </Left>
-        <Right>
-          {user ? (
-            <div>
-              <Avatar src={user.image} />
-              {user.name}
-            </div>
-          ) : (
-            <a href="/login">Login</a>
-          )}
-        </Right>
-      </Wrapper>
-    </Column>
-  </Background>
-)
+class Menu extends Component {
+  state = {
+    atTop: !window.pageYOffset
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
+
+  handleScroll = () => {
+    this.setState({
+      atTop: !window.pageYOffset
+    })
+  }
+
+  render({ user, scrollBackground }, { atTop }) {
+    return (
+      <Background className={scrollBackground && atTop ? null : Scrolled}>
+        <Column>
+          <Wrapper>
+            <Left>
+              <Logo to="/">BenchMarkyMark</Logo>
+              {user ? (
+                [
+                  <MenuLink to="/projects">Projects</MenuLink>,
+                  <MenuLink to="/team">Team</MenuLink>,
+                  <MenuLink to="/billing">Billing</MenuLink>,
+                  <MenuLink to="/settings">Settings</MenuLink>
+                ]
+              ) : null}
+            </Left>
+            <Right>
+              {user ? (
+                <div>
+                  <Avatar src={user.image} />
+                  {user.name}
+                </div>
+              ) : (
+                <a href="/login">Login</a>
+              )}
+            </Right>
+          </Wrapper>
+        </Column>
+      </Background>
+    )
+  }
+}
 
 export default Menu

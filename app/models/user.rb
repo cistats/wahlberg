@@ -7,10 +7,12 @@ class User < ApplicationRecord
 
   def self.from_github(auth)
     create_with(
-      email: auth.info.email,
+      username: auth.info.nickname,
       name: auth.info.name,
+      email: auth.info.email,
       image: auth.info.image
     ).find_or_create_by!(github_uid: auth.uid)
+     .tap { |u| u.update(github_token: auth.credentials.token) }
   end
 
   def ensure_team

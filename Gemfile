@@ -43,3 +43,9 @@ end
 # Auth
 gem 'devise'
 gem 'omniauth-github'
+
+# Responses
+gem 'active_model_serializers'
+
+# Github
+gem 'octokit'

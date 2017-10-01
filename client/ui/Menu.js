@@ -6,6 +6,7 @@ import { Column } from 'styles'
 
 const Background = styled.div`
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   color: rgba(255, 255, 255, 0.9);

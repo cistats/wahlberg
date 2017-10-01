@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 
 import Home from 'pages/Home'
-import App from 'containers/App'
+import App from 'sections/App'
 
 const checkAuth = Component => () =>
   window.CURRENT_USER ? (

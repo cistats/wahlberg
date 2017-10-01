@@ -1,19 +1,29 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 
 import Home from 'pages/Home'
 import App from 'containers/App'
 
+const checkAuth = Component => () =>
+  window.CURRENT_USER ? (
+    <Redirect to="/projects" />
+  ) : (
+    <Component user={window.CURRENT_USER} />
+  )
+
 render(
   <BrowserRouter>
     <Switch>
+      <Route exact path="/" render={checkAuth(Home)} />
       <Route
-        exact
-        path="/"
-        render={() => <Home user={window.CURRENT_USER} />}
+        render={() =>
+          window.CURRENT_USER ? (
+            <App user={window.CURRENT_USER} />
+          ) : (
+            <Redirect to="/" />
+          )}
       />
-      <Route render={() => <App user={window.CURRENT_USER} />} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

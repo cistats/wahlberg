@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def ensure_team
     Team.create_default(self).users << self if team.blank?
   end
+
+  def github
+    @github ||= Octokit::Client.new(access_token: github_token)
+  end
 end

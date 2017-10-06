@@ -9,6 +9,7 @@ const Background = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
   color: rgba(255, 255, 255, 0.9);
   transition: background-color 200ms ease-in-out;
 `

@@ -1,6 +1,6 @@
-import styled, { injectGlobal as css } from 'preact-emotion'
+import styled, { injectGlobal, css } from 'preact-emotion'
 
-css`
+injectGlobal`
   * {
     box-sizing: border-box;
   }
@@ -42,4 +42,10 @@ export const Column = styled.div`
   width: 1012px;
   margin-right: auto;
   margin-left: auto;
+`
+
+export const PageHeader = styled.h1`
+  margin-top: 75px;
+  margin-bottom: 0;
+  font-weight: 500;
 `

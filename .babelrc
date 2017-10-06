@@ -1,23 +1,45 @@
 {
   "presets": [
-    ["env", { "targets": {
-        "browsers": [
-          "last 2 Chrome versions",
-          "last 2 Firefox versions",
-          "last 2 iOS versions",
-          "last 2 Safari versions"
-        ]
-      },
-      "modules": false,
-      "loose": true,
-      "useBuiltIns": true
-    }],
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 Chrome versions",
+            "last 2 Firefox versions",
+            "last 2 iOS versions",
+            "last 2 Safari versions"
+          ]
+        },
+        "modules": false,
+        "loose": true,
+        "useBuiltIns": true
+      }
+    ],
     "stage-3",
     "react"
   ],
-  "plugins": [
-    "emotion",
-    "transform-runtime",
-    "transform-class-properties"
-  ]
+  "plugins": ["transform-runtime", "transform-class-properties"],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "emotion",
+          {
+            "sourceMap": false
+          }
+        ]
+      ]
+    },
+    "development": {
+      "plugins": [
+        [
+          "emotion",
+          {
+            "sourceMap": true
+          }
+        ]
+      ]
+    }
+  }
 }

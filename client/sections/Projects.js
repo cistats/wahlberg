@@ -1,47 +1,41 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'preact-emotion'
 
 import { Column, PageHeader } from '../styles'
 
-export const List = styled.div``
-
-export const ListHeader = styled.div`
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+`
+export const Header = styled.div`
+  margin-bottom: 20px;
   padding: 50px 20px 10px;
   font-weight: bold;
   border-bottom: 1px solid #eee;
 `
-export const ListItem = styled.div`
-  background-color: #fafafa;
+export const GridItem = styled(Link)`
+  display: block;
+  padding: 20px;
+  background-color: #2196f3;
+  background-image: linear-gradient(#2196f3, #26afff);
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.08);
+  transition: all 0.15s ease;
 
-  &:not(:first-of-type) {
-    border-bottom: 1px solid #eee;
-  }
-
-  & a {
-    position: relative;
-    display: block;
-    padding: 20px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #f2f2f2;
-      text-decoration: none;
-
-      &:before {
-        content: '»';
-        position: absolute;
-        right: 20px;
-        top: calc(50% - 30px);
-        color: #999;
-        font-size: 36px;
-        font-weight: 300;
-      }
-    }
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.02);
   }
 `
-export const Title = styled.div``
+export const Title = styled.div`
+  color: white;
+  font-weight: 500;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.25);
+`
 export const SubTitle = styled.div`
-  color: #999;
+  color: #eee;
   font-weight: 300;
   font-size: 80%;
 `
@@ -67,17 +61,17 @@ class Projects extends Component {
       <Column>
         <PageHeader>Add a new repository from GitHub:</PageHeader>
         {Object.keys(projects).map(org => (
-          <List>
-            <ListHeader>{org}</ListHeader>
-            {projects[org].map(({ name, description }) => (
-              <ListItem>
-                <a>
+          <div>
+            <Header>{org}</Header>
+            <Grid>
+              {projects[org].map(({ id, name, description }) => (
+                <GridItem to={`/projects/${name}`}>
                   <Title>{name}</Title>
                   <SubTitle>{description}</SubTitle>
-                </a>
-              </ListItem>
-            ))}
-          </List>
+                </GridItem>
+              ))}
+            </Grid>
+          </div>
         ))}
       </Column>
     )

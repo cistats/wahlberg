@@ -19,13 +19,14 @@ export const GridItem = styled(Link)`
   display: block;
   padding: 20px;
   background-color: #2196f3;
-  background-image: linear-gradient(#2196f3, #26afff);
+  background-image: linear-gradient(145deg, #2196f3, #26afff);
+  border: 1px solid #008eff;
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.08);
   transition: all 0.15s ease;
 
   &:hover {
     text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.08);
     transform: scale(1.02);
   }
 `

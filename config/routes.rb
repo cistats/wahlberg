@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resource :user, only: :show
     resources :users
 
-    resources :projects
+    resources :projects do
+      post :sync, on: :collection
+    end
   end
 
   devise_for :users, path: '', controllers: { omniauth_callbacks: 'omniauth' }

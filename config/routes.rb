@@ -4,8 +4,6 @@ Rails.application.routes.draw do
     resources :users
 
     resources :projects
-
-    resources :repos
   end
 
   devise_for :users, path: '', controllers: { omniauth_callbacks: 'omniauth' }

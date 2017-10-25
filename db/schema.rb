@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009003420) do
+ActiveRecord::Schema.define(version: 20171025023603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "project_users", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id", "user_id"], name: "index_project_users_on_project_id_and_user_id", unique: true
+    t.index ["project_id"], name: "index_project_users_on_project_id"
+    t.index ["user_id"], name: "index_project_users_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.text "org", null: false
@@ -36,7 +46,10 @@ ActiveRecord::Schema.define(version: 20171009003420) do
     t.datetime "updated_at", null: false
     t.text "username", null: false
     t.text "github_token"
+    t.datetime "github_synced_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "project_users", "projects"
+  add_foreign_key "project_users", "users"
 end

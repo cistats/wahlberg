@@ -1,8 +1,6 @@
 class CreateProjects < ActiveRecord::Migration[5.1]
   def change
     create_table :projects do |t|
-      t.references :team, foreign_key: true
-
       t.text :org, null: false
       t.text :repo, null: false
       t.integer :github_id, null: false

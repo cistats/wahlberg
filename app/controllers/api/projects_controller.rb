@@ -20,7 +20,7 @@ module Api
     private
 
     def projects_scope
-      current_user&.team&.projects
+      current_user&.projects
     end
 
     def projects

@@ -86,7 +86,6 @@ class Menu extends Component {
               {user ? (
                 [
                   <MenuLink to="/projects">Projects</MenuLink>,
-                  <MenuLink to="/team">Team</MenuLink>,
                   <MenuLink to="/billing">Billing</MenuLink>,
                   <MenuLink to="/settings">Settings</MenuLink>
                 ]

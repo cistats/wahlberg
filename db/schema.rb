@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20171009003420) do
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
-    t.bigint "team_id"
     t.text "org", null: false
     t.text "repo", null: false
     t.integer "github_id", null: false
@@ -24,17 +23,9 @@ ActiveRecord::Schema.define(version: 20171009003420) do
     t.datetime "updated_at", null: false
     t.index ["github_id"], name: "index_projects_on_github_id"
     t.index ["org", "repo"], name: "index_projects_on_org_and_repo"
-    t.index ["team_id"], name: "index_projects_on_team_id"
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.text "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.bigint "team_id"
     t.text "name", null: false
     t.text "email", null: false
     t.text "image"
@@ -46,8 +37,6 @@ ActiveRecord::Schema.define(version: 20171009003420) do
     t.text "username", null: false
     t.text "github_token"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
-  add_foreign_key "projects", "teams"
 end

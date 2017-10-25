@@ -1,9 +1,5 @@
 class User < ApplicationRecord
-  belongs_to :team, required: false
-
   devise :rememberable, :omniauthable, omniauth_providers: [:github]
-
-  after_create :ensure_team
 
   def self.from_github(auth)
     create_with(
@@ -15,11 +11,13 @@ class User < ApplicationRecord
      .tap { |u| u.update(github_token: auth.credentials.token) }
   end
 
-  def ensure_team
-    Team.create_default(self).users << self if team.blank?
-  end
-
   def github
     @github ||= Octokit::Client.new(access_token: github_token)
+  end
+
+  def repositories
+    Rails.cache.fetch("github/repos/#{id}", expires_in: 1.hour) do
+      github.repositories
+    end
   end
 end

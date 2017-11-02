@@ -35,11 +35,6 @@ export const Title = styled.div`
   font-weight: 500;
   text-shadow: 0 1px rgba(0, 0, 0, 0.25);
 `
-export const SubTitle = styled.div`
-  color: #eee;
-  font-weight: 300;
-  font-size: 80%;
-`
 
 class Projects extends Component {
   state = {
@@ -51,8 +46,15 @@ class Projects extends Component {
   }
 
   async fetchProjects() {
-    const projects = await fetch('/api/repos', { credentials: 'include' })
-    return await projects.json()
+    const results = await fetch('/api/projects', { credentials: 'include' })
+    const projects = await results.json()
+    return projects.reduce(
+      (projects, project) => ({
+        ...projects,
+        [project.org]: [...(projects[project.org] || []), project]
+      }),
+      {}
+    )
   }
 
   render({}, { projects }) {
@@ -65,10 +67,9 @@ class Projects extends Component {
           <div>
             <Header>{org}</Header>
             <Grid>
-              {projects[org].map(({ id, name, description }) => (
-                <GridItem to={`/projects/${name}`}>
-                  <Title>{name}</Title>
-                  <SubTitle>{description}</SubTitle>
+              {projects[org].map(({ id, repo }) => (
+                <GridItem to={`/projects/${repo}`}>
+                  <Title>{repo}</Title>
                 </GridItem>
               ))}
             </Grid>

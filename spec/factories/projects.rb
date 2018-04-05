@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :project do
     org { Faker::Lorem.word }
     repo { Faker::Lorem.word }

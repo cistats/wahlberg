@@ -17,7 +17,7 @@ gem 'lograge'
 group :development, :test do
   gem 'rspec', '~> 3.6'
   gem 'rspec-rails', '~> 3.6'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

@@ -15,7 +15,6 @@ gem 'warning'
 gem 'lograge'
 
 group :development, :test do
-  gem 'rspec', '~> 3.6'
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
   gem 'faker'

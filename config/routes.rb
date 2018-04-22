@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resource :user, only: :show
     resources :users
-
-    resources :projects do
-      post :sync, on: :collection
-    end
+    resources :teams
+    resources :projects
   end
 
   devise_for :users, path: '', controllers: { omniauth_callbacks: 'omniauth' }

@@ -17,11 +17,6 @@ module Api
       render json: project
     end
 
-    def sync
-      ProjectUser.sync_for_user(current_user)
-      render json: { done: true }
-    end
-
     private
 
     def projects_scope

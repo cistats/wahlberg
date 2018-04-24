@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422194557) do
+ActiveRecord::Schema.define(version: 2018_04_24_025015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20180422194557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
+    t.string "authorizer_type"
+    t.bigint "authorizer_id"
+    t.index ["authorizer_type", "authorizer_id"], name: "index_projects_on_authorizer_type_and_authorizer_id"
     t.index ["github_id"], name: "index_projects_on_github_id"
     t.index ["org", "repo"], name: "index_projects_on_org_and_repo"
     t.index ["team_id"], name: "index_projects_on_team_id"

@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :team_members
   has_many :teams, through: :team_members
 
+  has_many :projects, as: :authorizer
+
   devise :rememberable, :omniauthable, omniauth_providers: [:github]
 
   def self.from_github(auth)

@@ -20,7 +20,7 @@ module Api
     private
 
     def projects_scope
-      current_user&.projects
+      current_user&.teams.find(params[:team_id])&.projects
     end
 
     def projects

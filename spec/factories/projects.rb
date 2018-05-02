@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :project do
+    association :authorizer, factory: :user
     team
     org { Faker::Lorem.word }
     repo { Faker::Lorem.word }

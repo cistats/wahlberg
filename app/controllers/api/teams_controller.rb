@@ -32,7 +32,7 @@ module Api
     end
 
     def team_params
-      params.permit(:name)
+      params.permit(:name, :handle)
     end
   end
 end

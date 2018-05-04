@@ -49,6 +49,4 @@ Rails.application.configure do
   logger           = ActiveSupport::Logger.new(STDOUT)
   logger.formatter = config.log_formatter
   config.logger = ActiveSupport::TaggedLogging.new(logger)
-
-  config.action_controller.asset_host = "#{ENV['PUBLIC_URL']}:#{ENV['PORT'].to_i + 1}"
 end

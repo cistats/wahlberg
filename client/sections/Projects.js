@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'preact-emotion'
+import styled from 'react-emotion'
 
 import { Column, PageHeader } from '../styles'
 
@@ -15,7 +15,7 @@ export const Header = styled.div`
   font-weight: bold;
   border-bottom: 1px solid #eee;
 `
-export const GridItem = styled(Link)`
+export const GridItem = styled(Link) `
   display: block;
   padding: 20px;
   background-color: #2196f3;
@@ -57,7 +57,9 @@ class Projects extends Component {
     )
   }
 
-  render({}, { projects }) {
+  render() {
+    const { projects } = this.state
+
     if (!projects) return <div />
 
     return (

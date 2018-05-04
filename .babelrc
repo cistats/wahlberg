@@ -6,9 +6,7 @@
         "targets": {
           "browsers": [
             "last 2 Chrome versions",
-            "last 2 Firefox versions",
-            "last 2 iOS versions",
-            "last 2 Safari versions"
+            "last 1 iOS major versions"
           ]
         },
         "modules": false,
@@ -16,10 +14,13 @@
         "useBuiltIns": true
       }
     ],
-    "stage-3",
     "react"
   ],
-  "plugins": ["transform-runtime", "transform-class-properties"],
+  "plugins": [
+    "transform-runtime",
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ],
   "env": {
     "production": {
       "plugins": [

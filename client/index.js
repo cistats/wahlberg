@@ -9,8 +9,8 @@ const checkAuth = Component => () =>
   window.CURRENT_USER ? (
     <Redirect to="/projects" />
   ) : (
-    <Component user={window.CURRENT_USER} />
-  )
+      <Component user={window.CURRENT_USER} />
+    )
 
 render(
   <BrowserRouter>
@@ -21,8 +21,8 @@ render(
           window.CURRENT_USER ? (
             <App user={window.CURRENT_USER} />
           ) : (
-            <Redirect to="/" />
-          )}
+              <Redirect to="/" />
+            )}
       />
     </Switch>
   </BrowserRouter>,
@@ -31,5 +31,4 @@ render(
 
 if (module.hot) {
   module.hot.accept()
-  require('preact/debug')
 }

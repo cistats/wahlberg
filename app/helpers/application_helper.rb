@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def asset_url_for(type)
-    webpack_assets = JSON.parse(File.read('./webpack-assets.json'))
-    asset_url(webpack_assets.dig('app', type), skip_pipeline: true)
+  def asset_url_for(asset)
+    webpack_assets = JSON.parse(File.read('./public/dist/manifest.json'))
+    asset_url(webpack_assets[asset], skip_pipeline: true)
   end
 end

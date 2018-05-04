@@ -8,6 +8,6 @@
     <script>
       window.CURRENT_USER = <%= current_user ? ::UserSerializer.new(current_user).to_json.html_safe : 'null' %>
     </script>
-    <%= javascript_include_tag(asset_url_for('js')) %>
+    <%= javascript_include_tag(asset_url_for('app.js')) %>
   </body>
 </html>

@@ -1,14 +1,11 @@
-'use strict'
-
 require('dotenv').config()
-const path = require('path')
+const { resolve } = require('path')
 
 const webpack = require('webpack')
 const CleanPlugin = require('clean-webpack-plugin')
-const AssetsPlugin = require('assets-webpack-plugin')
-const BabiliPlugin = require('babili-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
 
-const assetsPath = path.resolve(__dirname, './public/dist')
+const assetsPath = resolve(__dirname, './public/dist')
 const port = parseInt(process.env.PORT) + 1
 
 const config = {
@@ -17,24 +14,24 @@ const config = {
   },
 
   output: {
-    path:          assetsPath,
-    filename:      '[name].js',
+    path: assetsPath,
+    filename: '[name].js',
     chunkFilename: '[name].js',
-    publicPath:    '/dist/'
+    publicPath: '/dist/',
   },
 
   module: {
     rules: [
       {
-        test:    /\.(jpg|png|svg|otf|ttf|eot|woff(2)?)(\?v=\d+\.\d+\.\d+)?$/,
-        include: [ path.resolve('./public'), path.resolve('./node_modules') ],
-        loader:  'url-loader',
+        test: /\.(jpg|png|svg|otf|ttf|eot|woff(2)?)(\?v=\d+\.\d+\.\d+)?$/,
+        include: [resolve('./public'), resolve('./node_modules')],
+        loader: 'url-loader',
         options: { limit: 10240, name: '[name].[ext]' }
       },
       {
-        test:    /\.js$/,
-        include: path.resolve(__dirname, "./client"),
-        loader:  'babel-loader',
+        test: /\.js$/,
+        include: resolve('./client'),
+        loader: 'babel-loader',
         options: { cacheDirectory: true }
       }
     ]
@@ -42,18 +39,12 @@ const config = {
 
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
       PUBLIC_URL: null
     }),
-    new AssetsPlugin(),
-    new webpack.NamedModulesPlugin()
+    new ManifestPlugin({ writeToFileEmit: true })
   ],
 
   resolve: {
-    alias: {
-      'react':     'preact-compat',
-      'react-dom': 'preact-compat',
-    },
     modules: [
       'client',
       'node_modules'
@@ -62,7 +53,7 @@ const config = {
 
   devServer: {
     port,
-    allowedHosts: [ 'localhost', '.lvh.me' ],
+    allowedHosts: ['localhost', '.lvh.me'],
     hot: true,
     hotOnly: true,
     headers: {
@@ -71,17 +62,17 @@ const config = {
   }
 }
 
-if (process.env.NODE_ENV !== 'production') {
-  config.devtool = 'cheap-module-source-map'
-  config.output.publicPath = `${process.env.PUBLIC_URL}:${port}/dist/`
-  config.plugins.push(new webpack.HotModuleReplacementPlugin())
-} else {
-  config.output.filename = '[name]-[hash].js'
-  config.output.chunkFilename = '[name]-[hash].js'
+module.exports = (env, argv) => {
+  if (argv.mode !== 'production') {
+    config.devtool = 'cheap-module-source-map'
+    config.output.publicPath = `${process.env.PUBLIC_URL}:${port}/dist/`
+    config.plugins.push(new webpack.HotModuleReplacementPlugin())
+  } else {
+    config.output.filename = '[name]-[hash].js'
+    config.output.chunkFilename = '[name]-[hash].js'
 
-  config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
-  config.plugins.push(new CleanPlugin([assetsPath], {verbose: false}))
-  config.plugins.push(new BabiliPlugin())
+    config.plugins.push(new CleanPlugin([assetsPath], { verbose: false }))
+  }
+
+  return config
 }
-
-module.exports = config

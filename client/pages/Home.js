@@ -1,12 +1,12 @@
 import React from 'react'
-import styled from 'preact-emotion'
+import styled from 'react-emotion'
 
 import { Column } from 'styles'
 import Menu from 'ui/Menu'
 
 const Header = styled.div`background: linear-gradient(45deg, #3300ff, #9944ff);`
 
-const Intro = styled(Column)`
+const Intro = styled(Column) `
   display: grid;
   grid-template-rows: 1fr auto auto 1fr;
   height: 500px;

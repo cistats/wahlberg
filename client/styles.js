@@ -1,4 +1,4 @@
-import styled, { injectGlobal, css } from 'preact-emotion'
+import styled, { injectGlobal, css } from 'react-emotion'
 
 injectGlobal`
   * {

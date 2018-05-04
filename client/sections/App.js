@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import styled from 'preact-emotion'
+import styled from 'react-emotion'
 
 import Menu from 'ui/Menu'
 import Projects from 'sections/Projects'

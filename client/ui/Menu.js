@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled, { css } from 'preact-emotion'
+import styled, { css } from 'react-emotion'
 import { Link } from 'react-router-dom'
 
 import { Column } from 'styles'
@@ -30,7 +30,7 @@ const Right = styled.div`
   text-align: right;
 `
 
-const Logo = styled(Link)`
+const Logo = styled(Link) `
   margin-right: 30px;
   font-size: 16px;
   font-weight: bold;
@@ -40,7 +40,7 @@ const Logo = styled(Link)`
     text-decoration: none;
   }
 `
-const MenuLink = styled(Link)`
+const MenuLink = styled(Link) `
   margin-left: 30px;
   color: #eee;
 
@@ -76,7 +76,10 @@ class Menu extends Component {
     })
   }
 
-  render({ user, scrollBackground }, { atTop }) {
+  render() {
+    const { user, scrollBackground } = this.props
+    const { atTop } = this.state
+
     return (
       <Background className={scrollBackground && atTop ? null : Scrolled}>
         <Column>
@@ -98,8 +101,8 @@ class Menu extends Component {
                   {user.name}
                 </div>
               ) : (
-                <a href="/login">Login</a>
-              )}
+                  <a href="/login">Login</a>
+                )}
             </Right>
           </Wrapper>
         </Column>

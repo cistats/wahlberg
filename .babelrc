@@ -1,25 +1,21 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "targets": {
-          "browsers": [
-            "last 2 Chrome versions",
-            "last 1 iOS major versions"
-          ]
+          "browsers": ["last 2 Chrome versions", "last 1 iOS major versions"]
         },
         "modules": false,
-        "loose": true,
-        "useBuiltIns": true
+        "loose": true
       }
     ],
-    "react"
+    "@babel/preset-react"
   ],
   "plugins": [
-    "transform-runtime",
-    "transform-class-properties",
-    "transform-object-rest-spread"
+    ["@babel/plugin-transform-runtime", { "useESModules": true }],
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
   ],
   "env": {
     "production": {
